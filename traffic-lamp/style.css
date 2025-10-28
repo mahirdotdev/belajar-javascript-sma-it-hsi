@@ -1,0 +1,100 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 1em;
+}
+.kontainer {
+  text-align: center;
+  background: white;
+  padding: 2em;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.lampu-traffic {
+  background: #333;
+  width: 120px;
+  margin: 0 auto 2em;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.lampu {
+  width: 80px;
+  height: 80px;
+  margin: 15px auto;
+  border-radius: 50%;
+  opacity: 0.3;
+  transition: opacity 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+
+.lampu.merah {
+  background: red;
+}
+
+.lampu.kuning {
+  background: yellow;
+}
+
+.lampu.hijau {
+  background: lime;
+}
+
+.lampu.nyala {
+  opacity: 1;
+  box-shadow: 0 0 30px currentColor;
+  animation: berkedip 0.5s ease-in-out;
+}
+
+@keyframes berkedip {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.kontrol, .kontrol-manual {
+  margin: 1em 0;
+}
+
+.tombol {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 1em;
+  border: none;
+  border-radius: 8px;
+  background: #667eea;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.tombol:hover {
+  background: #764ba2;
+}
+
+.tombol.manual {
+  background: #555;
+}
+
+.tombol.manual:hover {
+  background: #777;
+}
+
+#status {
+  margin-top: 1em;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}
