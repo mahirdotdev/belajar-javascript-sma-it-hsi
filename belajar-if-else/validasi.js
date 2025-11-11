@@ -22,3 +22,9 @@ tombolCek.addEventListener("click", function () {
 
   console.log("umunya ", umur, " minimalnya", umurMinimal);
 });
+
+
+// Tugas
+// 1. Buat baru, file belajar-if-eselse-2
+// 2. cek kelayakan Pendaftarkan SIM, berdasarkan tinggi badan
+//3. minimum tinggi adalah adalah 160
