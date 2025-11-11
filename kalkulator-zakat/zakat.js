@@ -2,16 +2,20 @@ var inputGram = document.getElementById("emas-gram");
 var tombol = document.getElementById("hitung");
 var hasil = document.getElementById("hasil");
 var historyList = document.getElementById("history");
+var hitungLagi = document.getElementById("hitung-disini");
 
 // Nilai tukar rupiah (per gram emas)
 var hargaEmasRupiah = 1100000; // contoh: Rp1.100.000/gram emas
 
 // Muat history dari localStorage saat pertama kali halaman dibuka
 function muatHistory() {
-  var data = localStorage.getItem("zakatHistory");
+  var data = localStorage.getItem("zakat-history");
+  // 100 -1 -> 99,98,97,96 ....
   historyList.innerHTML = "";
   if (data) {
     var list = JSON.parse(data);
+    //for (let n = 0;n < 0;n++){}
+    //infinite loop
     for (var i = list.length - 1; i >= 0; i--) {
       var item = list[i];
       var ele = document.createElement("li");
@@ -22,17 +26,23 @@ function muatHistory() {
 }
 
 function simpanHistory(text) {
-  var data = localStorage.getItem("zakatHistory");
+  var data = localStorage.getItem("zakat-history");
   var list = data ? JSON.parse(data) : [];
   list.push(text);
   if (list.length > 10) list = list.slice(-10); // batasi max 10 history
-  localStorage.setItem("zakatHistory", JSON.stringify(list));
+  localStorage.setItem("zakat-history", JSON.stringify(list));
   muatHistory();
 }
 
-tombol.addEventListener("click", function () {
+function handleOnClick() {
   var emas = parseFloat(inputGram.value);
   var nisab = 85;
+
+  //jika emas adalah not a number (bukan sebuah number)
+  if (isNaN(emas)) {
+    alert("Ini bukan nomor");
+    return;
+  }
 
   if (isNaN(emas) || emas <= 0) {
     hasil.textContent = "Masukkan jumlah emas yang benar!";
@@ -60,8 +70,34 @@ tombol.addEventListener("click", function () {
         zakatRupiah.toLocaleString("id-ID")
     );
   }
+
   inputGram.value = "";
-});
+}
+
+//inline function/anonimous function
+tombol.addEventListener("click", function () {});
+hitungLagi.addEventListener("click", handleOnClick);
 
 // Tampilkan riwayat perhitungan saat halaman dibuka
 muatHistory();
+
+var data = localStorage.getItem("zakat-history");
+
+console.log(data);
+console.log(JSON.parse(data));
+// case sensitif
+
+const today = new Date();
+console.log(today);
+console.log(typeof today);
+console.log(typeof today.toLocaleString());
+
+const n = 1 + 2;
+
+function hitungN(angka) {
+  return 1 + angka;
+}
+
+//kegunaan dari function
+//1. Agar tidak menulis code yang sama berulang ulang (meringkas)
+//2. Bisa menyederhanakan logika
