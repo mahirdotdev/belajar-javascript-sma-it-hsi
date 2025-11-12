@@ -16,12 +16,15 @@ function muatHistory() {
     var list = JSON.parse(data);
     //for (let n = 0;n < 0;n++){}
     //infinite loop
-    for (var i = list.length - 1; i >= 0; i--) {
+    for (var i = 0; i < list.length; i++) {
       var item = list[i];
       var ele = document.createElement("li");
       ele.textContent = item;
       historyList.appendChild(ele);
     }
+    let div = document.createElement("div");
+    div.textContent = data;
+    // historyList.appendChild(div);
   }
 }
 
@@ -101,3 +104,5 @@ function hitungN(angka) {
 //kegunaan dari function
 //1. Agar tidak menulis code yang sama berulang ulang (meringkas)
 //2. Bisa menyederhanakan logika
+
+console.log("ini", localStorage.getItem("zakat-history"));
